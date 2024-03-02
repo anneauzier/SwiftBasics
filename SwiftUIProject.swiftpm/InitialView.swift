@@ -30,18 +30,18 @@ struct InitialView: View {
                     .foregroundStyle(.white)
                     .padding(.top, 12)
                     
-//                    NavigationLink {
-//                        HistoryView(text: "Ajude a desmascarar as mentiras da barata numa dinâmica musical de jogo da memória onde você deve combinar os pares para desbloquear.")
-//                    } label: {
-//                        Image("startButton")
-//                    }
-
-                    Button {
-                        print("teste")
+                    NavigationLink {
+                        HistoryView()
                     } label: {
                         Image("startButton")
                     }
-                    .padding(.top, 60)
+
+//                    Button {
+//                        print("teste")
+//                    } label: {
+//                        Image("startButton")
+//                    }
+//                    .padding(.top, 60)
                 }
             }
             .ignoresSafeArea()
