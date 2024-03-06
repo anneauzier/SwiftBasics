@@ -9,8 +9,13 @@ import SwiftUI
 import AVFoundation
 
 struct HistoryView: View {
+<<<<<<< HEAD
     let text: String = "Ajude a desmascarar as mentiras da barata numa dinâmica musical de jogo da memória onde você deve combinar os pares para desbloquear."
     
+=======
+    let text: String = "Oi, gente! Eu sou a barata Fulana-De-Tal e hoje gostaria de contar a minha história envolvendo sete saias de filó.."
+
+>>>>>>> da010f0234a327628e92d9663b429f48236f833a
     let images = ["barataFalando1", "barataFalando2"]
     
     @State private var animatedText = ""
