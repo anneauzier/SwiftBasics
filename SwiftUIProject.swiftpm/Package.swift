@@ -17,20 +17,15 @@ let package = Package(
             name: "SwiftUIProject",
             targets: ["AppModule"],
             bundleIdentifier: "com.annamilani.SwiftUIProject",
-            teamIdentifier: "FJ6C8YTY7V",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .beachball),
             accentColor: .presetColor(.yellow),
             supportedDeviceFamilies: [
-                .pad,
                 .phone
             ],
             supportedInterfaceOrientations: [
-                .portrait,
-                .landscapeRight,
-                .landscapeLeft,
-                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+                .portrait
             ]
         )
     ],
@@ -41,7 +36,6 @@ let package = Package(
             resources: [
                 .process("Resources")
             ]
-        
         )
     ]
 )

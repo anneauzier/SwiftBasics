@@ -10,15 +10,15 @@ import AVFoundation
 
 struct HistoryView: View {
     let text: String = "Ajude a desmascarar as mentiras da barata numa dinâmica musical de jogo da memória onde você deve combinar os pares para desbloquear."
-
+    
     let images = ["barataFalando1", "barataFalando2"]
     
     @State private var animatedText = ""
     @State var currentIndex = 0
     @State var isAnimating: Bool = true
-
+    
     @State var audioPlayer: AVAudioPlayer?
-
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -32,19 +32,13 @@ struct HistoryView: View {
                     .frame(width: 195, height: 195)
                     .padding(.bottom, 65)
                     .onAppear {
-                        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
-                            withAnimation {
-                                if isAnimating {
-                                    self.currentIndex = (self.currentIndex + 1) % self.images.count
-                                }
-                            }
-                        }
+                        animateImage()
                         playAudio()
                     }
                     .onDisappear {
                         stopAudio()
                     }
-                
+
                 Image("rectangle")
                     .resizable()
                     .frame(width: 348, height: 205)
@@ -55,12 +49,25 @@ struct HistoryView: View {
                             .padding()
                             .foregroundStyle(Color("backgroundColor"))
                             .task {
+                                // aguardar a conclusao de uma operaçao assincrona
                                 await animate()
                                 isAnimating = false
                             }
                     }
             }
         }.ignoresSafeArea()
+    }
+    
+    func animateImage() {
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
+            if isAnimating {
+                self.currentIndex += 1
+                
+                if currentIndex >= images.count {
+                    currentIndex = 0
+                }
+            }
+        }
     }
     
     private func animate() async {
